@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Skills of Dominic Njangnabe - Discover my technical expertise in database management, programming, data analysis, and soft skills.">
+  <title>Dominic Njangnabe - Skills</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/jpg" href="/assets/emojis.png">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1A3C3C;
+      color: #E0E7E8;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+     .navbar {
+      background-color: #0a2351;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand i {
+      margin-right: 0.5rem;
+    }
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+    .menu-close {
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+    .nav-links a {
+      color: #E0E7E8;
+      text-decoration: none;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    .nav-links a i {
+      margin-right: 0.5rem;
+    }
+    .nav-links a:hover {
+      color: #fff;
+      background-color: #2a6f6f;
+    }
+    .nav-links a.nav-active {
+      background-color: #3a8f8f;
+      color: #fff;
+      font-weight: 600;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: linear-gradient(180deg, #1A3C3C, #2a6f6f);
+      color: #E0E7E8;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar-header {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .sidebar-nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1.5rem;
+    }
+    .sidebar-nav li {
+      margin-bottom: 1.2rem;
+    }
+    .sidebar-nav a {
+      color: #E0E7E8;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar-nav a i {
+      margin-right: 0.75rem;
+    }
+    .sidebar-nav a:hover {
+      background-color: #3a8f8f;
+      color: #fff;
+    }
+    .sidebar-nav a.nav-active {
+      background-color: #3a8f8f;
+      color: #fff;
+      font-weight: 600;
+    }
+    .content {
+      padding: 2rem;
+      margin-top: 80px;
+      transition: margin-left 0.3s ease-in-out;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .content.shifted {
+      margin-left: 280px;
+    }
+    .hero {
+      padding: 2rem;
+      background: linear-gradient(145deg, rgba(26, 60, 60, 0.9), rgba(42, 96, 96, 0.9));
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    .hero-text {
+      animation: fadeIn 1s ease-in-out;
+    }
+    .skills-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .skill-card {
+      background: linear-gradient(145deg, rgba(26, 60, 60, 0.9), rgba(42, 96, 96, 0.9));
+      padding: 1.75rem;
+      border-radius: 8px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .skill-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .skill-card ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .skill-card li {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2a6f6f;
+      color: #E0E7E8;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #3a8f8f;
+    }
+    .icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: #2a6f6f;
+      color: #E0E7E8;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .icon-circle:hover {
+      background-color: #3a8f8f;
+    }
+    footer {
+      background-color: #0a2351;
+      color: #e2e8f0;
+      padding: 1.5rem 0;
+      position: relative;
+      z-index: 1000;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .footer-section {
+      text-align: center;
+    }
+    .footer-section p, .footer-section a {
+      color: #e2e8f0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section a:hover {
+      color: #fff;
+    }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .back-to-top {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2a4a8b;
+      color: #e2e8f0;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .back-to-top:hover {
+      background-color: #3a5aab;
+    }
+    .decorative-line {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #4a5d5a, transparent);
+      margin: 1rem 0;
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        justify-content: space-between;
+      }
+      .navbar-content {
+        justify-content: space-between;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .menu-close {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+      }
+      .navbar-brand {
+        margin-right: 0;
+      }
+      .sidebar {
+        display: flex;
+        width: 80%;
+        max-width: 280px;
+      }
+      .sidebar.active .menu-toggle {
+        display: none;
+      }
+      .sidebar.active .menu-close {
+        display: block;
+      }
+      .content {
+        margin-top: 60px;
+        padding: 1rem;
+      }
+      .content.shifted {
+        margin-left: 0;
+      }
+      .hero {
+        padding: 1rem;
+      }
+      .skills-section {
+        grid-template-columns: 1fr;
+      }
+      .skill-card {
+        padding: 1.25rem;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      .footer-section {
+        text-align: center;
+      }
+      .footer-social {
+        justify-content: center;
+      }
+      .footer-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+    @media (min-width: 769px) {
+      .sidebar {
+        display: none;
+      }
+      .menu-toggle, .menu-close {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
+      }
+    }
+    .animate-slideIn {
+      animation: slideIn 0.5s ease-in-out;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">👨‍💻 Dominic Njangnabe</div>
+      <div class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i> My Profile</a></li>
+        <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="resume.html"><i class="fas fa-file-alt"></i> Resume</a></li>
+        <li><a href="skills.html"><i class="fas fa-tools"></i> Skills</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="sidebar" id="sidebar">
+    <div class="menu-close" onclick="toggleSidebar()">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="sidebar-header">👨‍💻 Dominic Njangnabe</div>
+    <div class="sidebar-nav">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i> My Profile</a></li>
+        <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="resume.html"><i class="fas fa-file-alt"></i> Resume</a></li>
+        <li><a href="skills.html"><i class="fas fa-tools"></i> Skills</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content" id="content">
+    <section class="hero">
+      <div class="hero-text">
+        <h1 class="text-6xl font-bold text-teal-100 mb-4">My Skills</h1>
+        <p class="text-lg text-gray-200 mb-4">Technical & Soft Skills</p>
+        <p class="text-md text-gray-300 mb-6">Explore my expertise in database management, programming, data analysis, and leadership, backed by certifications and achievements.</p>
+        <a href="resume.html" class="btn">View Resume</a>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="skill-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Database Management</h2>
+        <ul class="text-md text-gray-300">
+          <li>MySQL: Proficient in designing and optimizing relational databases.</li>
+          <li>Oracle: Experienced in enterprise-level database management.</li>
+          <li>PostgreSQL: Skilled in advanced querying and performance tuning.</li>
+          <li>AWS RDS: Expertise in cloud-based database deployment and management.</li>
+          <li><strong>Achievement</strong>: Led Database Club at UCC, earning a citation for advancing database technologies (2025).</li>
+          <li><strong>Certification</strong>: Professional Development in Database Management, Alison, GreatLearning, Programming Hub (2024).</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Programming</h2>
+        <ul class="text-md text-gray-300">
+          <li>Python: Specialized in database automation and scripting for efficient workflows.</li>
+          <li>PHP: Proficient in server-side programming for web applications.</li>
+          <li>JavaScript: Skilled in dynamic front-end and back-end development.</li>
+          <li>C++: Experienced in structured programming for system-level applications.</li>
+          <li><strong>Achievement</strong>: Led Team Trashformers to win the Waste to Wealth Hackathon with an AI-powered waste segregation system (CANS, UCC, 2025).</li>
+          <li><strong>Certification</strong>: Professional Development in Programming, Alison, GreatLearning, Programming Hub (2024).</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Data Analysis</h2>
+        <ul class="text-md text-gray-300">
+          <li>Microsoft Excel: Advanced skills in data manipulation and visualization.</li>
+          <li>Power BI: Proficient in creating interactive dashboards and reports.</li>
+          <li><strong>Application</strong>: Applied data analysis in internships at UCC’s E-Learning and Management Information System sections (2024).</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Web Development</h2>
+        <ul class="text-md text-gray-300">
+          <li>HTML/CSS: Skilled in building responsive and accessible web interfaces.</li>
+          <li>JavaScript: Experienced in enhancing interactivity in web applications.</li>
+          <li>PHP: Proficient in developing dynamic server-side applications.</li>
+          <li><strong>Application</strong>: Developed e-learning platforms during internship at UCC’s E-Learning and Knowledge Management Section (2024).</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Soft Skills</h2>
+        <ul class="text-md text-gray-300">
+          <li>Problem-Solving: Strong analytical skills demonstrated in hackathons and academic projects.</li>
+          <li>Interpersonal Skills: Effective communication and collaboration in team settings.</li>
+          <li>Leadership: Led Team Trashformers to victory and served as Database Club Lead at UCC.</li>
+          <li>Teamwork: Proven ability to work effectively in diverse teams, as shown in internships and hackathons.</li>
+          <li><strong>Achievement</strong>: Recognized for leadership in the Waste to Wealth Hackathon and Database Club (2025).</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer relative py-6">
+    <div class="footer-content max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-6 text-center">
+      <div class="footer-section">
+        <p class="text-sm text-white font-medium mb-2">© 2025 Dominic Njangnabe. All rights reserved.</p>
+        <div class="decorative-line"></div>
+        <p class="text-xs text-gray-400 mt-2">Last Updated: September 03, 2025</p>
+      </div>
+      <div class="footer-section">
+        <h3 class="text-lg text-white font-semibold mb-3">About Me</h3>
+        <p class="text-sm text-gray-300">A passionate BSc IT student at the University of Cape Coast, specializing in database design with MySQL, Oracle, PostgreSQL, and AWS RDS, automation with Python, programming with PHP, and data analysis with Excel and Power BI. Recognized as Database Club Lead (2025)</p>
+        <div class="footer-social flex justify-center gap-4 mt-4">
+          <a href="https://www.facebook.com/njangnabe.dominic.5" class="icon-circle"><i class="fab fa-facebook-f text-lg"></i></a>
+          <a href="#" class="icon-circle"><i class="fab fa-twitter text-lg"></i></a>
+          <a href="https://www.linkedin.com/in/dominic-njangnabe-15163a2ab/" class="icon-circle"><i class="fab fa-linkedin-in text-lg"></i></a>
+          <a href="https://github.com/Badime111" class="icon-circle"><i class="fab fa-github text-lg"></i></a>
+          <a href="#" class="icon-circle"><i class="fab fa-instagram text-lg"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3 class="text-lg text-white font-semibold mb-3">Stay Updated</h3>
+        <p class="text-sm text-gray-300 mb-2">Subscribe to my newsletter for the latest tech insights and project updates!</p>
+        <div class="flex justify-center">
+          <input type="email" id="newsletter-email" placeholder="Enter your email" class="w-full max-w-xs px-3 py-2 bg-gray-800 text-white rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-teal-600">
+          <button onclick="subscribeNewsletter()" class="ml-2 px-3 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-600">Subscribe</button>
+        </div>
+        <p class="text-sm text-white">Email: <a href="mailto:dominic.njangnabe@stu.ucc.edu.gh" class="hover:text-gray-200 transition duration-200">dominic.njangnabe@stu.ucc.edu.gh</a></p>
+        <p class="text-sm text-white">Phone: <a href="tel:+233551283612" class="hover:text-gray-200 transition duration-200">0551283612/0246053688</a></p>
+      </div>
+      <div class="footer-section">
+        <h3 class="text-lg text-white font-semibold mb-3">Quick Links</h3>
+        <div class="footer-nav flex justify-center gap-3 mt-4">
+          <a href="index.html" class="hover:text-gray-200 transition duration-200">Home</a>
+          <a href="about.html" class="hover:text-gray-200 transition duration-200">My Profile</a>
+          <a href="projects.html" class="hover:text-gray-200 transition duration-200">Projects</a>
+          <a href="resume.html" class="hover:text-gray-200 transition duration-200">Resume</a>
+          <a href="skills.html" class="hover:text-gray-200 transition duration-200">Skills</a>
+          <a href="contact.html" class="hover:text-gray-200 transition duration-200">Contact</a>
+        </div>
+        <a href="#content" class="back-to-top inline-block px-6 py-2 bg-blue-800 text-white rounded-lg mt-6 hover:bg-blue-700 transition duration-200 shadow-md">Back to Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('content');
+      sidebar.classList.toggle('active');
+      content.classList.toggle('shifted');
+    }
+
+    function subscribeNewsletter() {
+      const email = document.getElementById('newsletter-email').value;
+      if (email) {
+        alert('Thank you for subscribing!');
+      } else {
+        alert('Please enter a valid email address.');
+      }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        if (window.innerWidth <= 768) {
+          const sidebar = document.getElementById('sidebar');
+          const content = document.getElementById('content');
+          sidebar.classList.remove('active');
+          content.classList.remove('shifted');
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-slideIn');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, once: true });
+
+      document.querySelectorAll('.skill-card').forEach(card => {
+        observer.observe(card);
+      });
+    });
+    // Highlight active nav link
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a, .sidebar-nav a, .footer-nav a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('nav-active');
+        }
+      });
+  </script>
+</body>
+</html>
+
+

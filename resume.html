@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resume of Dominic Njangnabe - View my professional experience, skills, certifications, and achievements.">
+  <title>Dominic Njangnabe - Resume</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/jpg" href="/assets/emojis.png">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1A3C3C;
+      color: #E0E7E8;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .navbar {
+      background-color: #0a2351;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand i {
+      margin-right: 0.5rem;
+    }
+    .menu-toggle {
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+    .menu-close {
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+    .nav-links a {
+      color: #E0E7E8;
+      text-decoration: none;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    .nav-links a i {
+      margin-right: 0.5rem;
+    }
+    .nav-links a:hover {
+      color: #fff;
+      background-color: #2a6f6f;
+    }
+    .nav-links a.nav-active {
+      background-color: #3a8f8f;
+      color: #fff;
+      font-weight: 600;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: linear-gradient(180deg, #1A3C3C, #2a6f6f);
+      color: #E0E7E8;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2);
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar-header {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .sidebar-nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1.5rem;
+    }
+    .sidebar-nav li {
+      margin-bottom: 1.2rem;
+    }
+    .sidebar-nav a {
+      color: #E0E7E8;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar-nav a i {
+      margin-right: 0.75rem;
+    }
+    .sidebar-nav a:hover {
+      background-color: #3a8f8f;
+      color: #fff;
+    }
+    .sidebar-nav a.nav-active {
+      background-color: #3a8f8f;
+      color: #fff;
+      font-weight: 600;
+    }
+    .content {
+      padding: 2rem;
+      margin-top: 80px;
+      transition: margin-left 0.3s ease-in-out;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .content.shifted {
+      margin-left: 280px;
+    }
+    .hero {
+      padding: 2rem;
+      background: linear-gradient(145deg, rgba(26, 60, 60, 0.9), rgba(42, 96, 96, 0.9));
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    .hero-text {
+      animation: fadeIn 1s ease-in-out;
+    }
+    .resume-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .resume-card {
+      background: linear-gradient(145deg, rgba(26, 60, 60, 0.9), rgba(42, 96, 96, 0.9));
+      padding: 1.75rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .resume-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .resume-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .resume-card ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1.25rem;
+      text-align: left;
+    }
+    .resume-card li {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .resume-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+      border: 1px solid #E0E7E8;
+      padding: 4px;
+    }
+    .resume-card img:hover {
+      transform: scale(1.05);
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #E0E7E8;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .volunteering-mentorship {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .mentorship-card {
+      background: linear-gradient(145deg, rgba(26, 60, 60, 0.9), rgba(42, 96, 96, 0.9));
+      padding: 1.75rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      height: 450px; /* Adjusted to fit the image height (400px) plus padding */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+    }
+    .mentorship-card-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 2rem;
+    }
+    .mentorship-card img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    .mentorship-card h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #E0E7E8;
+    }
+    .mentorship-card p {
+      font-size: 1.2rem;
+      color: #E0E7E8;
+      flex: 1;
+    }
+    @media (max-width: 768px) {
+      .volunteering-mentorship {
+        grid-template-columns: 1fr;
+      }
+      .mentorship-card {
+        height: auto;
+        padding: 1rem;
+      }
+      .mentorship-card-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .mentorship-card img {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+      }
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2a6f6f;
+      color: #E0E7E8;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #3a8f8f;
+    }
+    .icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: #2a6f6f;
+      color: #E0E7E8;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .icon-circle:hover {
+      background-color: #3a8f8f;
+    }
+    footer {
+      background-color: #0a2351;
+      color: #e2e8f0;
+      padding: 1.5rem 0;
+      position: relative;
+      z-index: 1000;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .footer-section {
+      text-align: center;
+    }
+    .footer-section p, .footer-section a {
+      color: #e2e8f0;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section a:hover {
+      color: #fff;
+    }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .back-to-top {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #2a4a8b;
+      color: #e2e8f0;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .back-to-top:hover {
+      background-color: #3a5aab;
+    }
+    .decorative-line {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #4a5d5a, transparent);
+      margin: 1rem 0;
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        justify-content: space-between;
+      }
+      .navbar-content {
+        justify-content: space-between;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .menu-close {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+      }
+      .navbar-brand {
+        margin-right: 0;
+      }
+      .sidebar {
+        display: flex;
+        width: 80%;
+        max-width: 280px;
+      }
+      .sidebar.active .menu-toggle {
+        display: none;
+      }
+      .sidebar.active .menu-close {
+        display: block;
+      }
+      .content {
+        margin-top: 60px;
+        padding: 1rem;
+      }
+      .content.shifted {
+        margin-left: 0;
+      }
+      .hero {
+        padding: 1rem;
+      }
+      .resume-cards {
+        grid-template-columns: 1fr;
+      }
+      .resume-card {
+        padding: 1.25rem;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+      }
+      .footer-section {
+        text-align: center;
+      }
+      .footer-social {
+        justify-content: center;
+      }
+      .footer-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+    @media (min-width: 769px) {
+      .sidebar {
+        display: none;
+      }
+      .menu-toggle, .menu-close {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
+      }
+    }
+    .animate-slideIn {
+      animation: slideIn 0.5s ease-in-out;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-brand">👨‍💻 Dominic Njangnabe</div>
+      <div class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i> My Profile</a></li>
+        <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="resume.html" class="nav-active"><i class="fas fa-file-alt"></i> Resume</a></li>
+        <li><a href="skills.html"><i class="fas fa-tools"></i> Skills</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="sidebar" id="sidebar">
+    <div class="menu-close" onclick="toggleSidebar()">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="sidebar-header">👨‍💻 Dominic Njangnabe</div>
+    <div class="sidebar-nav">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i> My Profile</a></li>
+        <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="resume.html" class="nav-active"><i class="fas fa-file-alt"></i> Resume</a></li>
+        <li><a href="skills.html"><i class="fas fa-tools"></i> Skills</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content" id="content">
+    <section class="hero">
+      <div class="hero-text">
+        <h1 class="text-6xl font-bold text-teal-100 mb-4">My Resume</h1>
+        <p class="text-lg text-gray-200 mb-4">Professional Summary</p>
+        <p class="text-md text-gray-300 mb-6">Dedicated BSc Information Technology student at the University of Cape Coast with a passion for database Management (MySQL, Oracle, PostgreSQL, AWS RDS), automation with Python, programming with PHP, and data analysis with Excel and Power BI. Strong problem-solving and interpersonal skills, demonstrated through leadership in hackathons and academic projects.</p>
+        <a href="Dominic cv.pdf" target="_blank" class="btn" onclick="window.open(this.href, '_blank'); return false;">Download Resume</a>
+      </div>
+    </section>
+
+    <section class="resume-cards" id="resumeCards">
+      <div class="resume-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Contact Information</h2>
+        <ul class="text-md text-gray-300">
+          <li><strong>Email</strong>: <a href="mailto:dominic.njangnabe@stu.ucc.edu.gh">dominic.njangnabe@stu.ucc.edu.gh</a></li>
+          <li><strong>Phone</strong>: <a href="tel:+233551283612">0551283612 / 0246053688</a></li>
+          <li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/dominic-njangnabe-15163a2ab/">linkedin.com/in/dominic-njangnabe</a></li>
+          <li><strong>GitHub</strong>: <a href="https://github.com/Badime111">github.com/Badime111</a></li>
+        </ul>
+      </div>
+      <div class="resume-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Education</h2>
+        <ul class="text-md text-gray-300">
+          <li><strong>University of Cape Coast, Ghana</strong><br>BSc Information Technology, Level 400, 2022–Present<br>
+            <ul>
+              <li><strong>Level 300</strong>: Information Systems Management, Human Computer Interaction, Unix Programming, Software Engineering, Data Structures</li>
+              <li><strong>Level 200</strong>: Algorithms, Databases, Programming and Problem-Solving Analysis</li>
+              <li><strong>Level 100</strong>: Software Suite, Computer Hardware, Web Development</li>
+            </ul>
+          </li>
+          <li><strong>St. Paul’s Senior High School (SPACO), Denu, Volta Region, Ghana.</strong><br>Offered General Arts with Excellent academic performance</li>
+        </ul>
+      </div>
+      <div class="resume-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Experience</h2>
+        <ul class="text-md text-gray-300">
+          <li><strong>Database Management Club Lead of CITSA</strong><br>Level 400, 2025<br>Taught Database Management to Level 100 and 200 students, focusing on MySQL and database design principles.</li>
+          <li><strong>Intern, Electricity Company of Ghana, Tema Regional Office</strong><br>2024<br>Demonstrated skills in software management, supporting system maintenance and optimization.</li>
+          <li><strong>Intern, E-Learning and Knowledge Management Section, UCC</strong><br>2024<br>Applied database design and web development skills to enhance e-learning platforms.</li>
+          <li><strong>Intern, Management Information System, UCC</strong><br>2024<br>Showcased expertise in programming and database management, contributing to system efficiency.</li>
+        </ul>
+      </div>
+      <div class="resume-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Skills</h2>
+        <ul class="text-md text-gray-300">
+          <li><strong>Technical Skills</strong>:
+            <ul>
+              <li>Database Management: MySQL, Oracle, PostgreSQL, AWS RDS</li>
+              <li>Programming: Python (Database Automation), PHP, JavaScript, C++</li>
+              <li>Data Analysis: Microsoft Suite (Excel, Power BI)</li>
+            </ul>
+          </li>
+          <li><strong>Soft Skills</strong>:
+            <ul>
+              <li>Strong Problem-Solving</li>
+              <li>Interpersonal Skills</li>
+              <li>Leadership</li>
+              <li>Teamwork</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="resume-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Certifications</h2>
+        <ul class="text-md text-gray-300">
+          <li>Waste to Wealth Hackathon Certificate, College of Agriculture and Natural Sciences, UCC, 2025</li>
+          <li>Database Club Lead Citation, Computer Science and Information Technology Students Association, UCC, 2025</li>
+          <li>Professional Development in Database Management and Programming, Alison, 2024</li>
+          <li>Professional Development in Database Management and Programming, GreatLearning, 2024</li>
+          <li>Professional Development in Database Management and Programming, Programming Hub, 2024</li>
+        </ul>
+      </div>
+      <div class="resume-card">
+        <h2 class="text-2xl font-bold text-teal-100 mb-4">Achievements</h2>
+        <ul class="text-md text-gray-300">
+          <li>Led Team Trashformers to win the Waste to Wealth Hackathon, College of Agriculture and Natural Sciences 10th Anniversary, UCC, 2025, with the Smart Borla System, an AI-powered, solar-driven waste segregation solution for communities like Amamoma.</li>
+          <li>Recognized as Database Club Lead for leadership in advancing database technologies, Computer Science and Information Technology Students Association, UCC, 2025.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="volunteeringMentorship">
+      <h1 class="section-title">Volunteering and Mentorship</h1>
+      <div class="volunteering-mentorship">
+        <div class="resume-card">
+          <h2 class="text-2xl font-bold text-teal-100 mb-4">Leadership & Volunteering: Database Club Lead</h2>
+          <img src="DB club.jpg" alt="Teaching and Leading Database Club">
+          <p class="text-md text-gray-300">Volunteered as the Database Club Lead for CITSA at UCC, organizing and leading workshops to teach Level 100 and 200 students database management concepts, focusing on MySQL and PostgreSQL, fostering a collaborative learning environment.</p>
+        </div>
+        <div class="resume-card">
+          <h2 class="text-2xl font-bold text-teal-100 mb-4">Volunteering: Campus IT Support</h2>
+          <img src="voluntiar .jpg" alt="Campus IT Support">
+          <p class="text-md text-gray-300">Provided voluntary IT support at the University of Cape Coast, troubleshooting hardware and software issues, optimizing systems, and enhancing the campus technical infrastructure for students and faculty.</p>
+        </div>
+        <div class="resume-card">
+          <h2 class="text-2xl font-bold text-teal-100 mb-4">Leadership: Mentoring Students</h2>
+          <img src="DB club2.jpg" alt="Mentoring Students">
+          <p class="text-md text-gray-300">Mentored Level 100 and 200 students passionate about database management, guiding them through hands-on projects and practical applications of MySQL, Oracle, and PostgreSQL to build their technical expertise.</p>
+        </div>
+      </div>
+      <div class="mentorship-card">
+        <div class="mentorship-card-content">
+          <img src="prof.jpg" alt="Professor Mentoring">
+          <div>
+            <h3>Seeking Mentorship from my Professors</h3>
+            <p>Actively sought mentorship from my professors to guide my tech journey, focusing on advanced database techniques and innovative project development to enhance my skills and career growth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer relative py-6">
+    <div class="footer-content max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-6 text-center">
+      <div class="footer-section">
+        <p class="text-sm text-white font-medium mb-2">© 2025 Dominic Njangnabe. All rights reserved.</p>
+        <div class="decorative-line"></div>
+        <p class="text-xs text-gray-400 mt-2">Last Updated: September 03, 2025</p>
+      </div>
+      <div class="footer-section">
+        <h3 class="text-lg text-white font-semibold mb-3">About Me</h3>
+        <p class="text-sm text-gray-300">A passionate BSc IT student at the University of Cape Coast, specializing in database design with MySQL, Oracle, PostgreSQL, and AWS RDS, automation with Python, programming with PHP, and data analysis with Excel and Power BI. Recognized as Database Club Lead (2025)</p>
+        <div class="footer-social flex justify-center gap-4 mt-4">
+          <a href="https://www.facebook.com/njangnabe.dominic.5" class="icon-circle"><i class="fab fa-facebook-f text-lg"></i></a>
+          <a href="#" class="icon-circle"><i class="fab fa-twitter text-lg"></i></a>
+          <a href="https://www.linkedin.com/in/dominic-njangnabe-15163a2ab/" class="icon-circle"><i class="fab fa-linkedin-in text-lg"></i></a>
+          <a href="https://github.com/Badime111" class="icon-circle"><i class="fab fa-github text-lg"></i></a>
+          <a href="#" class="icon-circle"><i class="fab fa-instagram text-lg"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3 class="text-lg text-white font-semibold mb-3">Stay Updated</h3>
+        <p class="text-sm text-gray-300 mb-2">Subscribe to my newsletter for the latest tech insights and project updates!</p>
+        <div class="flex justify-center">
+          <input type="email" id="newsletter-email" placeholder="Enter your email" class="w-full max-w-xs px-3 py-2 bg-gray-800 text-white rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-teal-600">
+          <button onclick="subscribeNewsletter()" class="ml-2 px-3 py-2 bg-teal-700 text-white rounded-md hover:bg-teal-600">Subscribe</button>
+        </div>
+        <p class="text-sm text-white">Email: <a href="mailto:dominic.njangnabe@stu.ucc.edu.gh" class="hover:text-gray-200 transition duration-200">dominic.njangnabe@stu.ucc.edu.gh</a></p>
+        <p class="text-sm text-white">Phone: <a href="tel:+233551283612" class="hover:text-gray-200 transition duration-200">0551283612/0246053688</a></p>
+      </div>
+      <div class="footer-section">
+        <h3 class="text-lg text-white font-semibold mb-3">Quick Links</h3>
+        <div class="footer-nav flex justify-center gap-3 mt-4">
+          <a href="index.html" class="hover:text-gray-200 transition duration-200">Home</a>
+          <a href="about.html" class="hover:text-gray-200 transition duration-200">My Profile</a>
+          <a href="projects.html" class="hover:text-gray-200 transition duration-200">Projects</a>
+          <a href="resume.html" class="hover:text-gray-200 transition duration-200 nav-active">Resume</a>
+          <a href="skills.html" class="hover:text-gray-200 transition duration-200">Skills</a>
+          <a href="contact.html" class="hover:text-gray-200 transition duration-200">Contact</a>
+        </div>
+        <a href="#content" class="back-to-top inline-block px-6 py-2 bg-blue-800 text-white rounded-lg mt-6 hover:bg-blue-700 transition duration-200 shadow-md">Back to Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('content');
+      sidebar.classList.toggle('active');
+      content.classList.toggle('shifted');
+    }
+
+    function subscribeNewsletter() {
+      const email = document.getElementById('newsletter-email').value;
+      if (email) {
+        alert('Thank you for subscribing!');
+      } else {
+        alert('Please enter a valid email address.');
+      }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        if (window.innerWidth <= 768) {
+          const sidebar = document.getElementById('sidebar');
+          const content = document.getElementById('content');
+          sidebar.classList.remove('active');
+          content.classList.remove('shifted');
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-slideIn');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, once: true });
+
+      document.querySelectorAll('.resume-card').forEach(card => {
+        observer.observe(card);
+      });
+
+      // Highlight active nav link
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a, .sidebar-nav a, .footer-nav a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('nav-active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
